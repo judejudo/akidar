@@ -1,0 +1,98 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <header className="relative w-full pt-[27px] pb-[27px] px-20 max-md:max-w-full max-md:px-5">
+      <div className="flex flex-col relative min-h-20 w-full rounded-[7px] max-md:max-w-full">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/3b968d35c8e25d2e0177c63684b2d53d5167e2b8?placeholderIfAbsent=true"
+          alt="Header background"
+          className="absolute h-full w-full object-cover inset-0 rounded-[7px]"
+        />
+        <nav className="flex flex-col relative min-h-20 w-full items-center justify-center px-[70px] py-2.5 rounded-[7px] max-md:max-w-full max-md:px-5">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3b968d35c8e25d2e0177c63684b2d53d5167e2b8?placeholderIfAbsent=true"
+            alt="Navigation background"
+            className="absolute h-full w-full object-cover inset-0 rounded-[7px]"
+          />
+          <div className="relative flex w-full max-w-[977px] items-center gap-5 justify-between max-md:flex-col">
+            <Link
+              to="/"
+              className="flex flex-col self-stretch relative aspect-[3.4] w-[204px]"
+            >
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/042c95711795d1e5cc7c2fa9b4856cf34dbe6863?placeholderIfAbsent=true"
+                alt="Akidar Security Logo"
+                className="absolute h-full w-full object-cover inset-0"
+              />
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/042c95711795d1e5cc7c2fa9b4856cf34dbe6863?placeholderIfAbsent=true"
+                alt="Akidar Security Logo"
+                className="aspect-[3.4] object-contain w-full"
+              />
+            </Link>
+
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-[rgba(49,48,137,1)] text-[22px] font-bold"
+              >
+                Menu
+              </button>
+            </div>
+
+            <div
+              className={`flex md:flex-row flex-col items-center gap-5 ${isMenuOpen ? "flex" : "hidden md:flex"}`}
+            >
+              <Link
+                to="/"
+                className="text-[rgba(49,48,137,1)] text-[22px] font-bold self-stretch"
+              >
+                Home
+              </Link>
+              <Link
+                to="/about"
+                className="text-[rgba(49,48,137,1)] text-[22px] font-bold self-stretch"
+              >
+                About
+              </Link>
+              <Link
+                to="/services"
+                className="text-[rgba(49,48,137,1)] text-[22px] font-bold self-stretch"
+              >
+                Services
+              </Link>
+              <Link
+                to="/jobs"
+                className="text-[rgba(49,48,137,1)] text-[22px] font-bold self-stretch"
+              >
+                Jobs
+              </Link>
+              <Link
+                to="/contact"
+                className="flex flex-col self-stretch relative aspect-[3.58] w-[179px] text-[22px] text-white font-extrabold rounded-[7px]"
+              >
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/276b5f269207f839d3950f1561f1a2d8fd5c9936?placeholderIfAbsent=true"
+                  alt="Contact button background"
+                  className="absolute h-full w-full object-cover inset-0 rounded-[7px]"
+                />
+                <div className="flex flex-col relative aspect-[3.58] px-[25px] py-3 rounded-[7px] items-center justify-center max-md:px-5">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/276b5f269207f839d3950f1561f1a2d8fd5c9936?placeholderIfAbsent=true"
+                    alt="Contact button background"
+                    className="absolute h-full w-full object-cover inset-0 rounded-[7px]"
+                  />
+                  Contact Us
+                </div>
+              </Link>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
+};
