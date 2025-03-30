@@ -9,7 +9,7 @@ export const Services = () => {
       id: 1,
       title: "Patrol",
       description: "24hr patrol with 2-visits per 12hrs shift",
-      icon: "/patrol.png", // Path corrected for public folder
+      icon: "/security-officer.png", // Path corrected for public folder
       img: "/patrol_img.jpg", // Image for background and link
       link: "/services/patrol.png",
     },
@@ -33,15 +33,15 @@ export const Services = () => {
       id: 4,
       title: "CCTV Installation",
       description: "Professional CCTV installation and monitoring services",
-      icon: "/cctv.png", // Add your actual icon
+      icon: "cctv-camera.png", // Add your actual icon
       img: "/cctv.jpg", // Add your actual image
-      link: "/services/cctv-installation",
+      link: "/services/cctv-camera.png",
     },
     {
       id: 5,
       title: "Security Systems",
       description: "Advanced security system solutions for all premises",
-      icon: "/security.png", // Add your actual icon
+      icon: "/security-system.png", // Add your actual icon
       img: "/security system.jpg", // Add your actual image
       link: "/services/security-systems",
     },
