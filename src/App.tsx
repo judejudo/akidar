@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Service from "./pages/Service";
-import Layout from "./components/layout";
+import Layout from "./components/Layout";
 
 const queryClient = new QueryClient();
 
