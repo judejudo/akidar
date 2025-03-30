@@ -1,5 +1,4 @@
 import {
-  Header,
   Hero,
   About,
   WhyChooseUs,
