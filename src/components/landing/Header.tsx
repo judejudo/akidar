@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,20 +19,15 @@ export const Header = () => {
             alt="Navigation background"
             className="absolute h-full w-full object-cover inset-0 rounded-[7px]"
           />
-          <div className="relative flex w-full max-w-[977px] items-center gap-5 justify-between max-md:flex-col">
+          <div className="relative flex w-full max-w-[1300px] items-center justify-between  max-md:flex-col">
             <Link
               to="/"
-              className="flex flex-col self-stretch relative aspect-[3.4] w-[204px]"
+              className="flex flex-col self-start relative aspect-[3.4] w-[204px]"
             >
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/042c95711795d1e5cc7c2fa9b4856cf34dbe6863?placeholderIfAbsent=true"
                 alt="Akidar Security Logo"
-                className="absolute h-full w-full object-cover inset-0"
-              />
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/042c95711795d1e5cc7c2fa9b4856cf34dbe6863?placeholderIfAbsent=true"
-                alt="Akidar Security Logo"
-                className="aspect-[3.4] object-contain w-full"
+                className="absolute h-full w-full object-cover md:right-50 inset-0"
               />
             </Link>
 
@@ -45,49 +41,41 @@ export const Header = () => {
             </div>
 
             <div
-              className={`flex md:flex-row flex-col items-center gap-5 ${isMenuOpen ? "flex" : "hidden md:flex"}`}
+              className={`flex md:flex-row flex-col justify-center  items-center gap-10 ${
+                isMenuOpen ? "flex" : "hidden md:flex"
+              }`}
             >
               <Link
                 to="/"
-                className="text-[rgba(49,48,137,1)] text-[22px] font-bold self-stretch"
+                className="text-[rgba(49,48,137,1)] text-[22px] my-auto font-bold self-stretch"
               >
                 Home
               </Link>
               <Link
                 to="/about"
-                className="text-[rgba(49,48,137,1)] text-[22px] font-bold self-stretch"
+                className="text-[rgba(49,48,137,1)] text-[22px] font-bold my-auto self-stretch"
               >
                 About
               </Link>
               <Link
                 to="/services"
-                className="text-[rgba(49,48,137,1)] text-[22px] font-bold self-stretch"
+                className="text-[rgba(49,48,137,1)] text-[22px] font-bold my-auto self-stretch"
               >
                 Services
               </Link>
               <Link
                 to="/jobs"
-                className="text-[rgba(49,48,137,1)] text-[22px] font-bold self-stretch"
+                className="text-[rgba(49,48,137,1)] text-[22px] font-bold my-auto self-stretch"
               >
                 Jobs
               </Link>
+
               <Link
                 to="/contact"
-                className="flex flex-col self-stretch relative aspect-[3.58] w-[179px] text-[22px] text-white font-extrabold rounded-[7px]"
+                className="flex flex-col self-stretch relative aspect-[3.58]  w-[179px]  font-extrabold rounded-[7px]"
               >
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/276b5f269207f839d3950f1561f1a2d8fd5c9936?placeholderIfAbsent=true"
-                  alt="Contact button background"
-                  className="absolute h-full w-full object-cover inset-0 rounded-[7px]"
-                />
-                <div className="flex flex-col relative aspect-[3.58] px-[25px] py-3 rounded-[7px] items-center justify-center max-md:px-5">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/276b5f269207f839d3950f1561f1a2d8fd5c9936?placeholderIfAbsent=true"
-                    alt="Contact button background"
-                    className="absolute h-full w-full object-cover inset-0 rounded-[7px]"
-                  />
-                  Contact Us
-                </div>
+                <Button variant="secondary" className=" bg-[rgba(49,48,137,1)] my-auto text-[22px] text-white">Contact Us</Button>
+
               </Link>
             </div>
           </div>

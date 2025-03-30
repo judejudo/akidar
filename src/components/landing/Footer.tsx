@@ -1,151 +1,164 @@
 import { Link } from "react-router-dom";
 
+// Reusable components for better organization
+const FooterHeading = ({ children }) => (
+  <h3 className="text-2xl font-bold mb-4">{children}</h3>
+);
+
+const FooterNavLink = ({ to, children }) => (
+  <Link to={to} className="block hover:underline transition-colors py-1">
+    {children}
+  </Link>
+);
+
+const FooterSection = ({ title, children, className = "" }) => (
+  <div className={`flex flex-col ${className}`}>
+    <FooterHeading>{title}</FooterHeading>
+    {children}
+  </div>
+);
+
 export const Footer = () => {
+  // Constant URLs for better maintenance
+  const IMAGES = {
+    SECURITY_BADGE: "https://cdn.builder.io/api/v1/image/assets/TEMP/a701a46ef32b62d0445556976f0b88022e3de73f?placeholderIfAbsent=true",
+    FOOTER_BG: "https://cdn.builder.io/api/v1/image/assets/TEMP/40f67aaba8c23d33c21318ca9e3d65e905bc9e3c?placeholderIfAbsent=true",
+    LOGO: "https://cdn.builder.io/api/v1/image/assets/TEMP/26777251e541a536bc95fe40a0d795e564a8d7e0?placeholderIfAbsent=true",
+    COPYRIGHT: "https://cdn.builder.io/api/v1/image/assets/TEMP/8fbae1c54c4ee7db952f3f1d1d7757dab3990038?placeholderIfAbsent=true"
+  };
+
+  // Service links for mapping
+  const SERVICES = [
+    { path: "/services/patrols", label: "Patrols" },
+    { path: "/services/manned-guarding", label: "Manned Guarding" },
+    { path: "/services/event-security", label: "Event Security" },
+    { path: "/services/dog-services", label: "Dog Services" },
+    { path: "/services/security-systems", label: "Security Systems" },
+    { path: "/services/cctv-installation", label: "CCTV Installation" },
+    { path: "/services/security-fencing", label: "Security Fencing" }
+  ];
+
+  // Quick links for mapping
+  const QUICK_LINKS = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/services", label: "Services" },
+    { path: "/contact", label: "Contact Us" }
+  ];
+
   return (
-    <footer>
-      <div className="self-center flex w-full max-w-[985px] items-start gap-1 flex-wrap mt-[63px] max-md:max-w-full max-md:mt-10">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/a701a46ef32b62d0445556976f0b88022e3de73f?placeholderIfAbsent=true"
-          alt="Security badge"
-          className="aspect-[1] object-contain w-[131px] shrink-0 max-w-full"
-        />
-        <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit mt-[38px] max-md:max-w-full">
-          <div className="text-[rgba(49,48,137,1)] text-[22px] font-bold ml-[108px] max-md:ml-2.5">
-            At Akidar Security Limited
-          </div>
-          <div className="bg-[rgba(225,224,255,1)] text-[50px] text-[rgba(65,65,65,1)] font-medium px-[70px] py-[31px] rounded-[10px] max-md:max-w-full max-md:text-[40px] max-md:px-5">
-            Your security is our priority
+    <footer className="pt-16">
+      {/* Banner section */}
+      <div className="container mx-auto px-4 mb-16">
+        <div className="flex flex-col md:flex-row items-center gap-4">
+          <img
+            src={IMAGES.SECURITY_BADGE}
+            alt="Security certification badge"
+            className="w-32 h-32 object-contain"
+          />
+          <div className="flex-1">
+            <div className="text-indigo-800 text-xl font-bold mb-2 text-center md:text-left">
+              At Akidar Security Limited
+            </div>
+            <div className="bg-indigo-50 text-3xl md:text-5xl text-gray-700 font-medium px-6 py-6 rounded-lg text-center">
+              Your security is our priority
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col relative min-h-[552px] w-full text-white mt-[63px] px-20 py-[43px] rounded-[0px_0px_0px_0px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+      {/* Main footer section */}
+      <div className="relative text-white">
         <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/40f67aaba8c23d33c21318ca9e3d65e905bc9e3c?placeholderIfAbsent=true"
-          alt="Footer background"
+          src={IMAGES.FOOTER_BG}
+          alt=""
           className="absolute h-full w-full object-cover inset-0"
+          aria-hidden="true"
         />
-        <div className="relative flex w-full max-w-[1248px] gap-5 flex-wrap justify-between max-md:max-w-full max-md:mr-2.5">
-          <div className="flex flex-col">
-            <h3 className="text-2xl font-bold">About</h3>
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/26777251e541a536bc95fe40a0d795e564a8d7e0?placeholderIfAbsent=true"
-              alt="Akidar Security Logo"
-              className="aspect-[3.4] object-contain w-[279px] max-w-full mt-[15px] rounded-[10px]"
-            />
-            <p className="text-[21px] font-normal self-stretch mt-[35px]">
-              Akidar Security Limited is a leading Kenyan security company
-              providing comprehensive and customized security solutions to
-              clients across the public and private sectors.
-            </p>
+        
+        <div className="relative container mx-auto px-4 py-12">
+          {/* Footer content grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {/* About column */}
+            <FooterSection title="About" className="lg:col-span-1">
+              <img
+                src={IMAGES.LOGO}
+                alt="Akidar Security Logo"
+                className="w-64 max-w-full rounded-lg mb-6"
+              />
+              <p className="text-lg">
+                Akidar Security Limited is a leading Kenyan security company
+                providing comprehensive and customized security solutions to
+                clients across the public and private sectors.
+              </p>
+            </FooterSection>
+
+            {/* Quick links column */}
+            <FooterSection title="Quick Links">
+              <nav className="text-xl space-y-1" aria-label="Quick links">
+                {QUICK_LINKS.map(link => (
+                  <FooterNavLink key={link.path} to={link.path}>
+                    {link.label}
+                  </FooterNavLink>
+                ))}
+              </nav>
+            </FooterSection>
+
+            {/* Services column */}
+            <FooterSection title="Our Services">
+              <nav className="text-xl space-y-1" aria-label="Services navigation">
+                {SERVICES.map(service => (
+                  <FooterNavLink key={service.path} to={service.path}>
+                    {service.label}
+                  </FooterNavLink>
+                ))}
+              </nav>
+            </FooterSection>
+
+            {/* Contact column */}
+            <FooterSection title="Contact Us">
+              <address className="text-xl not-italic space-y-4">
+                <p>
+                  Canon Towers-Mapembeni Moi Avenue &<br />
+                  Nairobi, Kipro-House, Westlands Ring Road
+                </p>
+                <p>
+                  <a href="tel:+254700337123" className="hover:underline transition-colors">
+                    +254 700 337 123
+                  </a>
+                </p>
+                <p>
+                  <a href="mailto:Akidarlimited@gmail.com" className="hover:underline transition-colors">
+                    Akidarlimited@gmail.com
+                  </a>
+                </p>
+              </address>
+            </FooterSection>
           </div>
 
-          <div className="text-2xl">
-            <h3 className="font-bold">Quick Links</h3>
-            <nav className="font-normal leading-[50px] mt-[13px]">
-              <Link to="/" className="block hover:underline">
-                Home
-              </Link>
-              <Link to="/about" className="block hover:underline">
-                About
-              </Link>
-              <Link to="/services" className="block hover:underline">
-                Services
-              </Link>
-              <Link to="/contact" className="block hover:underline">
-                Contact Us
-              </Link>
-            </nav>
-          </div>
+          {/* Divider */}
+          <div className="border-t border-white border-dashed my-6" />
 
-          <div className="self-stretch flex flex-col items-stretch text-2xl">
-            <h3 className="font-bold">Our Services</h3>
-            <nav className="font-normal leading-[50px] mt-[13px]">
-              <Link to="/services/patrols" className="block hover:underline">
-                Patrols
-              </Link>
-              <Link
-                to="/services/manned-guarding"
-                className="block hover:underline"
-              >
-                Manned Guarding
-              </Link>
-              <Link
-                to="/services/event-security"
-                className="block hover:underline"
-              >
-                Event Security
-              </Link>
-              <Link
-                to="/services/dog-services"
-                className="block hover:underline"
-              >
-                Dog Services
-              </Link>
-              <Link
-                to="/services/security-systems"
-                className="block hover:underline"
-              >
-                Security Systems
-              </Link>
-              <Link
-                to="/services/cctv-installation"
-                className="block hover:underline"
-              >
-                CCTV Installation
-              </Link>
-              <Link
-                to="/services/security-fencing"
-                className="block hover:underline"
-              >
-                Security Fencing
-              </Link>
-            </nav>
-          </div>
-
-          <div className="flex flex-col items-stretch text-2xl">
-            <h3 className="font-bold">Contact Us</h3>
-            <address className="font-normal leading-[29px] mt-[13px] not-italic">
-              Canon Towers-Mapembeni Moi Avenue &<br />
-              Nairobi, Kipro-House, Westlands Ring Road
-              <br />
-              <br />
-              <a href="tel:+254700337123" className="hover:underline">
-                +254 700 337 123
-              </a>
-              <br />
-              <br />
-              <a
-                href="mailto:Akidarlimited@gmail.com"
-                className="hover:underline"
-              >
-                Akidarlimited@gmail.com
-              </a>
-            </address>
-          </div>
-        </div>
-
-        <div className="relative border w-full max-w-[1300px] shrink-0 h-px mt-6 border-white border-dashed" />
-
-        <div className="relative flex w-full max-w-[1241px] items-stretch gap-5 text-2xl font-normal leading-none flex-wrap justify-between mr-[26px] mt-5 max-md:max-w-full max-md:mr-2.5">
-          <div className="flex items-stretch gap-3.5 flex-wrap">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/8fbae1c54c4ee7db952f3f1d1d7757dab3990038?placeholderIfAbsent=true"
-              alt="Copyright icon"
-              className="aspect-[1] object-contain w-[30px] shrink-0"
-            />
-            <div className="basis-auto grow shrink max-md:max-w-full">
-              Copyright 2025 Akidar Security Limited
+          {/* Copyright row */}
+          <div className="flex flex-col md:flex-row justify-between items-center text-xl gap-4">
+            <div className="flex items-center">
+              <img
+                src={IMAGES.COPYRIGHT}
+                alt=""
+                className="w-6 h-6 mr-2"
+                aria-hidden="true"
+              />
+              <span>Copyright {new Date().getFullYear()} Akidar Security Limited</span>
             </div>
-          </div>
-          <div>
-            <Link to="/terms" className="hover:underline">
-              Terms & Conditions
-            </Link>{" "}
-            |{" "}
-            <Link to="/privacy" className="hover:underline">
-              Privacy Policy
-            </Link>
+            <div className="text-center md:text-right">
+              <Link to="/terms" className="hover:underline transition-colors">
+                Terms & Conditions
+              </Link>{" "}
+              |{" "}
+              <Link to="/privacy" className="hover:underline transition-colors">
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         </div>
       </div>

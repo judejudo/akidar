@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+// Define form schema using zod
 const contactSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
@@ -12,6 +13,71 @@ const contactSchema = z.object({
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
+
+// Create reusable components for cleaner JSX
+const ContactInfoItem = ({
+  icon,
+  children,
+  href = undefined,
+}: {
+  icon: string;
+  children: React.ReactNode;
+  href?: string;
+}) => {
+  const content = (
+    <>
+      <div className="bg-white flex items-center justify-center w-16 h-16 rounded-full">
+        <img src={icon} alt="" className="w-10 aspect-square object-contain" />
+      </div>
+      <div className="text-white text-2xl font-normal my-auto">{children}</div>
+    </>
+  );
+
+  return (
+    <div className="relative flex items-center gap-5 mt-6">
+      {href ? (
+        <a href={href} className="flex items-center gap-5 hover:underline">
+          {content}
+        </a>
+      ) : (
+        content
+      )}
+    </div>
+  );
+};
+
+const FormField = ({
+  register,
+  name,
+  placeholder,
+  type = "text",
+  error = null,
+  className = "",
+}: {
+  register: any;
+  name: keyof ContactFormData;
+  placeholder: string;
+  type?: string;
+  error?: any;
+  className?: string;
+}) => (
+  <div className={`grow ${className}`}>
+    <input
+      type={type}
+      placeholder={placeholder}
+      {...register(name)}
+      aria-invalid={error ? "true" : "false"}
+      className={`bg-white border w-full px-5 py-4 rounded-lg border-gray-200 ${
+        error ? "border-red-500" : ""
+      }`}
+    />
+    {error && (
+      <p className="text-red-500 text-sm mt-1" role="alert">
+        {error.message}
+      </p>
+    )}
+  </div>
+);
 
 export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,207 +95,190 @@ export const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    console.log("Form submitted:", data);
-    setIsSuccess(true);
-    setIsSubmitting(false);
-    reset();
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log("Form submitted:", data);
+      setIsSuccess(true);
+      reset();
+    } catch (error) {
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
 
     // Reset success message after 3 seconds
     setTimeout(() => setIsSuccess(false), 3000);
   };
 
+  // Image constants to avoid duplication
+  const CONTACT_BG =
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/32a66acb15b2059ee8ac23c47098a8c8587f2ebf?placeholderIfAbsent=true";
+  const FORM_BG =
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/3f2ae1fbbb731f499ca2d282906fda9c58a7e3e0?placeholderIfAbsent=true";
+  const PHONE_ICON =
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/bea9bd29c0f4bf23ee35cb8a860003c01dcbc499?placeholderIfAbsent=true";
+  const EMAIL_ICON =
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/73065214fdd31c4ea1f91053182b31d5d9d1450b?placeholderIfAbsent=true";
+  const LOCATION_ICON =
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/9570418203a44d726eb81e93716561e15d67081c?placeholderIfAbsent=true";
+  const POST_ICON =
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/f72483072705c9fc11595333d6f40079ca7618c2?placeholderIfAbsent=true";
+  const SEND_BTN_BG =
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/3ac450313b6ddfba87f33a4d952b3df791b2c3b6?placeholderIfAbsent=true";
+
   return (
-    <section className="mt-[103px] max-md:max-w-full max-md:mr-0.5 max-md:mt-10">
-      <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
-        <div className="w-[43%] max-md:w-full max-md:ml-0">
-          <div className="flex flex-col relative min-h-[600px] w-full px-20 py-[63px] rounded-[0px_0px_0px_0px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+    <section
+      className="mt-24 md:mt-26 max-w-full"
+      aria-labelledby="contact-heading"
+    >
+      <div className="flex flex-col md:flex-row gap-5">
+        {/* Contact Information Panel */}
+        <div className="w-full md:w-5/12">
+          <div className="relative min-h-[600px] w-full px-5 md:px-20 py-16 rounded-none">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/32a66acb15b2059ee8ac23c47098a8c8587f2ebf?placeholderIfAbsent=true"
-              alt="Contact background"
+              src={CONTACT_BG}
+              alt=""
               className="absolute h-full w-full object-cover inset-0"
+              aria-hidden="true"
             />
-            <h2 className="relative text-white text-[45px] font-semibold self-center max-md:text-[40px]">
+            <h2
+              id="contact-heading"
+              className="relative text-white text-4xl md:text-5xl font-semibold text-center mb-8"
+            >
               CONTACT US
             </h2>
 
-            <div className="relative flex items-stretch gap-[21px] mt-[25px]">
-              <div className="bg-white flex flex-col items-center justify-center w-[60px] h-[60px] px-2.5 rounded-[50%]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/bea9bd29c0f4bf23ee35cb8a860003c01dcbc499?placeholderIfAbsent=true"
-                  alt="Phone icon"
-                  className="aspect-[1] object-contain w-10"
-                />
-              </div>
-              <a
-                href="tel:+254700337123"
-                className="text-white text-2xl font-normal basis-auto my-auto hover:underline"
-              >
-                +254 700 337 123
-              </a>
+            <ContactInfoItem icon={PHONE_ICON} href="tel:+254700337123">
+              +254 700 337 123
+            </ContactInfoItem>
+
+            <ContactInfoItem
+              icon={EMAIL_ICON}
+              href="mailto:Akidarlimited@gmail.com"
+            >
+              Akidarlimited@gmail.com
+            </ContactInfoItem>
+
+            <ContactInfoItem icon={LOCATION_ICON}>
+              Canon Towers-Mapembeni, Moi Avenue
+            </ContactInfoItem>
+
+            <div className="relative bg-white/80 border w-full max-w-sm mx-auto h-px mt-6 border-dashed" />
+
+            <div className="relative text-white text-2xl font-normal text-center mt-4">
+              Nairobi, Kipro-House-Westlands Ring Road
             </div>
 
-            <div className="relative flex items-stretch gap-[21px] mt-[25px] max-md:mr-2.5">
-              <div className="bg-white flex flex-col items-center justify-center w-[60px] h-[60px] px-2.5 rounded-[50%]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/73065214fdd31c4ea1f91053182b31d5d9d1450b?placeholderIfAbsent=true"
-                  alt="Email icon"
-                  className="aspect-[1] object-contain w-10"
-                />
-              </div>
-              <a
-                href="mailto:Akidarlimited@gmail.com"
-                className="text-white text-2xl font-normal basis-auto grow shrink my-auto hover:underline"
-              >
-                Akidarlimited@gmail.com
-              </a>
-            </div>
-
-            <div className="relative flex items-stretch gap-[21px] mt-[25px]">
-              <div className="bg-white flex flex-col items-center justify-center w-[60px] h-[60px] px-2.5 rounded-[50%]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/9570418203a44d726eb81e93716561e15d67081c?placeholderIfAbsent=true"
-                  alt="Location icon"
-                  className="aspect-[1] object-contain w-10"
-                />
-              </div>
-              <address className="text-white text-2xl font-normal basis-auto grow shrink not-italic">
-                Canon Towers-Mapembeni, Moi Avenue
-              </address>
-            </div>
-
-            <div className="relative bg-[rgba(217,217,217,1)] border w-[339px] shrink-0 max-w-full h-px mt-2.5 border-[rgba(255,255,255,0.8)] border-dashed" />
-
-            <address className="relative text-white text-2xl font-normal self-center w-[328px] ml-[38px] mt-[11px] not-italic">
-              Nairobi, Kipro-House-Westlands Ring Road{" "}
-            </address>
-
-            <div className="relative self-center flex w-[359px] max-w-full items-stretch gap-[21px] mt-[25px]">
-              <div className="bg-white flex flex-col items-center justify-center w-[60px] h-[60px] px-2.5 rounded-[50%]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/f72483072705c9fc11595333d6f40079ca7618c2?placeholderIfAbsent=true"
-                  alt="Post icon"
-                  className="aspect-[1] object-contain w-10"
-                />
-              </div>
-              <div className="text-white text-2xl font-normal grow shrink w-[266px] basis-auto my-auto">
-                165519-80100 Mombasa
-              </div>
-            </div>
+            <ContactInfoItem icon={POST_ICON}>
+              165519-80100 Mombasa
+            </ContactInfoItem>
           </div>
         </div>
 
-        <div className="w-[57%] ml-5 max-md:w-full max-md:ml-0">
-          <div className="flex flex-col relative min-h-[600px] w-full text-2xl text-[rgba(135,135,135,1)] font-normal px-20 py-[29px] rounded-[5px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+        {/* Contact Form Panel */}
+        <div className="w-full md:w-7/12">
+          <div className="relative min-h-[600px] w-full text-2xl text-gray-600 font-normal px-5 md:px-20 py-8">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/3f2ae1fbbb731f499ca2d282906fda9c58a7e3e0?placeholderIfAbsent=true"
-              alt="Form background"
+              src={FORM_BG}
+              alt=""
               className="absolute h-full w-full object-cover inset-0"
+              aria-hidden="true"
             />
-            <h3 className="relative text-[rgba(65,65,65,1)] text-3xl font-medium w-[514px] max-md:max-w-full">
-              Have any questions? Send them to us and out team will get back to
-              you as soon as possible
-            </h3>
+            <div className="flex flex-col items-center justify-center h-full ml:10">
+              <h3 className="relative text-gray-700 text-3xl font-medium max-w-lg">
+                Have any questions? Send them to us and our team will get back
+                to you as soon as possible
+              </h3>
 
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="relative mt-[37px] w-full"
-            >
-              <div className="flex w-full max-w-[599px] items-stretch gap-[40px_61px] flex-wrap">
-                <div className="grow shrink-0 basis-0 w-fit">
-                  <input
-                    type="text"
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="relative mt-8 w-full"
+                aria-label="Contact form"
+              >
+                <div className="flex flex-wrap w-full max-w-[600px] gap-4 md:gap-8">
+                  <FormField
+                    register={register}
+                    name="firstName"
                     placeholder="First Name"
-                    {...register("firstName")}
-                    className={`bg-white border w-full px-5 py-4 rounded-[10px] border-[rgba(222,222,222,1)] border-solid ${errors.firstName ? "border-red-500" : ""}`}
+                    error={errors.firstName}
+                    className="w-full md:w-[calc(50%-1rem)]"
                   />
-                  {errors.firstName && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.firstName.message}
-                    </p>
-                  )}
-                </div>
-                <div className="grow shrink-0 basis-0 w-fit">
-                  <input
-                    type="text"
-                    placeholder="Last Name"
-                    {...register("lastName")}
-                    className={`bg-white border w-full px-5 py-4 rounded-[10px] border-[rgba(222,222,222,1)] border-solid ${errors.lastName ? "border-red-500" : ""}`}
-                  />
-                  {errors.lastName && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.lastName.message}
-                    </p>
-                  )}
-                </div>
-              </div>
 
-              <div className="flex w-full max-w-[599px] items-stretch gap-[40px_61px] flex-wrap mt-[33px]">
-                <div className="grow shrink-0 basis-0 w-fit">
-                  <input
+                  <FormField
+                    register={register}
+                    name="lastName"
+                    placeholder="Last Name"
+                    error={errors.lastName}
+                    className="w-full md:w-[calc(50%-1rem)]"
+                  />
+                </div>
+
+                <div className="flex flex-wrap w-full max-w-[600px] gap-4 md:gap-8 mt-8">
+                  <FormField
+                    register={register}
+                    name="email"
                     type="email"
                     placeholder="Your email"
-                    {...register("email")}
-                    className={`bg-white border w-full px-5 py-4 rounded-[10px] border-[rgba(222,222,222,1)] border-solid ${errors.email ? "border-red-500" : ""}`}
+                    error={errors.email}
+                    className="w-full md:w-[calc(50%-1rem)]"
                   />
-                  {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.email.message}
-                    </p>
-                  )}
-                </div>
-                <div className="grow shrink-0 basis-0 w-fit">
-                  <input
+
+                  <FormField
+                    register={register}
+                    name="phone"
                     type="tel"
                     placeholder="Phone number"
-                    {...register("phone")}
-                    className={`bg-white border w-full px-5 py-4 rounded-[10px] border-[rgba(222,222,222,1)] border-solid ${errors.phone ? "border-red-500" : ""}`}
+                    error={errors.phone}
+                    className="w-full md:w-[calc(50%-1rem)]"
                   />
-                  {errors.phone && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.phone.message}
+                </div>
+
+                <div className="relative w-full max-w-[600px] mt-8">
+                  <textarea
+                    placeholder="Your question/message"
+                    {...register("message")}
+                    aria-invalid={errors.message ? "true" : "false"}
+                    className={`bg-white border w-full p-5 rounded-lg border-gray-200 min-h-[150px] ${
+                      errors.message ? "border-red-500" : ""
+                    }`}
+                  ></textarea>
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-1" role="alert">
+                      {errors.message.message}
                     </p>
                   )}
                 </div>
-              </div>
 
-              <div className="relative w-full max-w-[599px] mt-7">
-                <textarea
-                  placeholder="Your question/message"
-                  {...register("message")}
-                  className={`bg-white border w-full mt-7 pt-3.5 pb-[79px] px-5 rounded-[10px] border-[rgba(222,222,222,1)] border-solid ${errors.message ? "border-red-500" : ""}`}
-                  rows={5}
-                ></textarea>
-                {errors.message && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.message.message}
-                  </p>
-                )}
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="flex flex-col relative aspect-[3] text-[26px] text-white font-semibold whitespace-nowrap mt-7 px-[57px] py-[15px] rounded-[5px] max-md:px-5 items-center justify-center disabled:opacity-70"
-              >
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ac450313b6ddfba87f33a4d952b3df791b2c3b6?placeholderIfAbsent=true"
-                  alt="Send button background"
-                  className="absolute h-full w-full object-cover inset-0"
-                />
-                <span className="relative">
-                  {isSubmitting ? "Sending..." : "Send"}
-                </span>
-              </button>
-
-              {isSuccess && (
-                <div className="mt-4 p-4 bg-green-100 text-green-800 rounded-md">
-                  Your message has been sent successfully!
+                <div className="relative mt-8">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="relative text-2xl text-white font-semibold px-14 py-4 rounded disabled:opacity-70"
+                    aria-live="polite"
+                  >
+                    <img
+                      src={SEND_BTN_BG}
+                      alt=""
+                      className="absolute h-full w-full object-cover inset-0"
+                      aria-hidden="true"
+                    />
+                    <span className="relative">
+                      {isSubmitting ? "Sending..." : "Send"}
+                    </span>
+                  </button>
                 </div>
-              )}
-            </form>
+
+                {isSuccess && (
+                  <div
+                    className="mt-4 p-4 bg-green-100 text-green-800 rounded-md"
+                    role="status"
+                  >
+                    Your message has been sent successfully!
+                  </div>
+                )}
+              </form>
+            </div>
           </div>
         </div>
       </div>
