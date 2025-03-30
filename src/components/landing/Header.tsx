@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="relative w-full pt-[27px] pb-[27px] px-20 max-md:max-w-full max-md:px-5">
+    <header className="relative w-full pt-[10px] pb-[10px] px-20 max-md:max-w-full max-md:px-5">
       <div className="flex flex-col relative min-h-20 w-full rounded-[7px] max-md:max-w-full">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/3b968d35c8e25d2e0177c63684b2d53d5167e2b8?placeholderIfAbsent=true"
@@ -58,7 +59,7 @@ export const Header = () => {
                 About
               </Link>
               <Link
-                to="/services"
+                to="/Services"
                 className="text-[rgba(49,48,137,1)] text-[22px] font-bold my-auto self-stretch"
               >
                 Services

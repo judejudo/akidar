@@ -17,7 +17,6 @@ const Index = () => {
           alt="Hero background"
           className="absolute h-full w-full object-cover inset-0"
         />
-        <Header />
         <Hero />
       </div>
 
