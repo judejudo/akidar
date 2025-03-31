@@ -22,11 +22,11 @@ export const About = () => {
           </h3>
 
           {/* Core Value 1 */}
-          <div className="w-full max-w-[684px] mt-[30px] flex flex-wrap">
+          <div className="md:flex w-full max-w-[684px] mt-[30px] items-center  ">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/4e67dd5d2a0c76b72fd04b6f9a6910da344a61a1"
               alt="Customer Service Excellence icon"
-              className="w-[120px] max-md:w-[80px]"
+              className="w-[120px] md:w-[200px] max-md:w-[80px]"
             />
             <div className="ml-5 max-md:ml-2 text-2xl max-md:text-lg text-[rgba(30,30,30,1)]">
               <h4 className="font-semibold">Customer Service Excellence</h4>
@@ -38,11 +38,11 @@ export const About = () => {
           </div>
 
           {/* Core Value 2 */}
-          <div className="w-full max-w-[684px] mt-[30px] flex flex-wrap">
+          <div className="md:flex w-full max-w-[684px] mt-[30px] items-center ">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/034ef3ad0bac66f57c3544bd0754a8e7ef439f63"
               alt="Integrity icon"
-              className="w-[120px] max-md:w-[80px]"
+              className="w-[120px] md:w-[200px] max-md:w-[80px]"
             />
             <div className="ml-5 max-md:ml-2 text-2xl max-md:text-lg text-[rgba(30,30,30,1)]">
               <h4 className="font-semibold">Integrity</h4>
@@ -54,38 +54,37 @@ export const About = () => {
           </div>
 
           {/* Core Values 3*/}
-          <div className="w-full max-w-[684px] mt-[30px] flex flex-wrap">
-          <img
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/9592ccb84c4e37ee24eb67584058d99924065259?placeholderIfAbsent=true"
-                    alt="Professionalism icon"
-                    className="aspect-[1] object-contain w-[120px]"
-                  />
+          <div className="md:flex w-full max-w-[684px] mt-[30px] items-center ">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9592ccb84c4e37ee24eb67584058d99924065259?placeholderIfAbsent=true"
+              alt="Professionalism icon"
+              className="aspect-[1] object-contain w-[120px] md:w-[200px]"
+            />
             <div className="ml-5 max-md:ml-2 text-2xl max-md:text-lg text-[rgba(30,30,30,1)]">
-            <h4>Professionalism</h4>
-                  <p className="text-black font-normal mt-2.5 max-md:max-w-full">
-                    We maintain a smart appearance, and adhere to strict
-                    protocols
-                  </p>
+              <h4 className="font-semibold">Professionalism</h4>
+              <p className="text-black font-normal mt-2.5 max-md:max-w-full">
+                We maintain a smart appearance, and adhere to strict protocols
+              </p>
             </div>
           </div>
-          
+
           {/* Core Values  4 */}
-          <div className="w-full max-w-[684px] mt-[30px] flex flex-wrap">
-          <img
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/da7e50b6697c532ceb5ebed4ce7850713bd82cd0?placeholderIfAbsent=true"
-                    alt="Team Work icon"
-                    className="aspect-[1] object-contain w-[120px] mt-9"
-                  />
+          <div className="md:flex w-full max-w-[684px] mt-[30px] items-center ">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/da7e50b6697c532ceb5ebed4ce7850713bd82cd0?placeholderIfAbsent=true"
+              alt="Team Work icon"
+              className="aspect-[1] object-contain w-[120px] mt-9 md:w-[200px]"
+            />
             <div className="ml-5 max-md:ml-2 text-2xl max-md:text-lg text-[rgba(30,30,30,1)]">
-            <h4 className="mt-[59px] max-md:mt-10">Team Work</h4>
-                  <p className="text-black font-normal mt-2.5 max-md:max-w-full max-md:mr-1.5">
-                    Our security personnel work together seamlessly, both
-                    internally and in partnership with our clients
-                  </p>
+              <h4 className="font-semibold">Team Work</h4>
+              <p className="text-black font-normal mt-2.5 max-md:max-w-full max-md:mr-1.5">
+                Our security personnel work together seamlessly, both internally
+                and in partnership with our clients
+              </p>
             </div>
           </div>
-                   {/* Security Guard Image & Button */}
-         <div className="md:hidden text-3xl text-[rgba(49,48,137,1)] font-semibold text-center mt-[237px] max-md:mt-10">
+          {/* Security Guard Image & Button */}
+          <div className="md:hidden text-3xl text-[rgba(49,48,137,1)] font-semibold text-center mt-[237px] max-md:mt-10">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a5ce3b482e3bc965f2983dbb378611b955389f7"
               alt="Security guard"
@@ -96,19 +95,17 @@ export const About = () => {
             </button>
           </div>
         </div>
-         {/* Security Guard Image & Button */}
-         <div className="hidden md:block text-3xl text-[rgba(49,48,137,1)] font-semibold text-center mt-[537px] w-full">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a5ce3b482e3bc965f2983dbb378611b955389f7"
-              alt="Security guard"
-              className="w-full rounded-lg"
-            />
-            <button className="flex items-center justify-center gap-4 mt-[30px] px-10 py-[14px] rounded-lg border-2 border-[rgba(49,48,137,1)] max-md:w-full max-md:px-5">
-              <span className="text-lg font-medium">Read More</span>
-
-            </button>
-          </div>
-        
+        {/* Security Guard Image & Button */}
+        <div className=" flex flex-col md:blocktext-3xl text-[rgba(49,48,137,1)] items-center font-semibold text-center mt-[537px] w-full">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a5ce3b482e3bc965f2983dbb378611b955389f7"
+            alt="Security guard"
+            className="w-full rounded-lg md:w-[300px] lg:w-[500px] max-md:max-w-full"
+          />
+          <button className="flex items-center justify-center gap-4 mt-[30px] px-10 py-[14px] rounded-lg border-2 border-[rgba(49,48,137,1)] max-md:w-full max-md:px-5">
+            <span className="text-lg font-medium">Read More</span>
+          </button>
+        </div>
       </div>
     </section>
   );

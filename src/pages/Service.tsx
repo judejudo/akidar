@@ -7,14 +7,14 @@ import ServiceFeatures from "@/components/services/ServiceFeatures";
 const Service: React.FC = () => {
   return (
     <div className="bg-white flex flex-col overflow-hidden items-stretch">
-      <div className="flex flex-col relative min-h-[300px] w-full font-bold max-md:max-w-full">
+      <div className="flex flex-col relative min-h-[300px] bg-black/10 backdrop-blur-0  w-full font-bold max-md:max-w-full">
         <img
-          src="https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/0ae217e09b6ee02b4b98362e64202e4658e21dda?placeholderIfAbsent=true"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/489d0b179777374ae308d5e17e7970b0f3c32f43?placeholderIfAbsent=true"
           className="absolute h-full w-full object-cover inset-0"
         />
         <div className="relative flex w-full flex-col items-stretch justify-center px-20 py-[33px] max-md:max-w-full max-md:px-5">
           <div className="flex flex-col items-stretch max-md:max-w-full">
-
+            
             <Hero />
           </div>
         </div>

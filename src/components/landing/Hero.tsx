@@ -1,6 +1,6 @@
 export const Hero = () => {
   return (
-    <section className="relative min-h-[850px] w-full pb-16 max-md:max-w-full bg-black/10 backdrop-blur-0 ">
+    <section className="relative min-h-[850px] w-full pb-16 max-md:max-w-full bg-black/10 backdrop-blur-sm ">
       <div className="relative  w-full pt-0 pb-[136px] px-20 max-md:max-w-full max-md:pb-[100px] max-md:px-5">
       <div className="flex justify-center items-center ">
       <div className="flex mb-[-27px] flex-col items-stretch max-md:max-w-full max-md:mb-2.5">
