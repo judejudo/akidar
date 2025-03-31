@@ -23,7 +23,6 @@ const Index = () => {
       <WhyChooseUs />
       <Services />
       <Contact />
-      <Footer />
     </div>
   );
 };

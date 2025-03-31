@@ -53,7 +53,7 @@ export const Header = () => {
                 Home
               </Link>
               <Link
-                to="/about"
+                to="/aboutUs"
                 className="text-[rgba(49,48,137,1)] text-[22px] font-bold my-auto self-stretch"
               >
                 About

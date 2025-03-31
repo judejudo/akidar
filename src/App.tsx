@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Service from "./pages/Service";
 import Layout from "./components/Layout";
+import AboutUs from "./pages/Aboutus";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,14 @@ const App = () => (
             element={
               <Layout>
                 <Service />
+              </Layout>
+            }
+          />
+          <Route
+            path="/aboutUs"
+            element={
+              <Layout>
+                <AboutUs />
               </Layout>
             }
           />
