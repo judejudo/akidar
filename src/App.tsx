@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import Service from "./pages/Service";
 import Layout from "./components/Layout";
 import AboutUs from "./pages/Aboutus";
+import EventSecurity from "./components/services/EventSecurity";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,14 @@ const App = () => (
             element={
               <Layout>
                 <Service />
+              </Layout>
+            }
+          />
+          <Route
+            path="/events"
+            element={
+              <Layout>
+                <EventSecurity />
               </Layout>
             }
           />

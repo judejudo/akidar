@@ -127,13 +127,13 @@ export const Services = () => {
                   
                   {/* Read More Button */}
                   <div>
-                    <Link
+                    {/* <Link
                       to={service.link}
                       className="bg-indigo-800 text-white px-5 py-2 rounded flex items-center w-fit"
                     >
                       Read More 
                       <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </div>

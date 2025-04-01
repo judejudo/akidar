@@ -17,7 +17,7 @@ const ServiceSidebar = () => {
     },
     {
       name: "Event Security",
-      path: "/services/event-security",
+      path: "/events",
       icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/4f0ced58a4a80933867438a1d7d98750bca5eb94?placeholderIfAbsent=true"
     },
     {

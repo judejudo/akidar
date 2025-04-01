@@ -90,9 +90,9 @@ export const About = () => {
               alt="Security guard"
               className="w-full rounded-lg"
             />
-            <button className="mt-[30px] px-10 py-[14px]  rounded-lg border-2 border-[rgba(49,48,137,1)] w-[300px] max-md:px-5">
+            {/* <button className="mt-[30px] px-10 py-[14px]  rounded-lg border-2 border-[rgba(49,48,137,1)] w-[300px] max-md:px-5">
               <span className="text-lg font-medium">Read More</span>
-            </button>
+            </button> */}
           </div>
         </div>
         {/* Security Guard Image & Button */}
@@ -102,9 +102,9 @@ export const About = () => {
             alt="Security guard"
             className="w-full rounded-lg md:w-[300px] lg:w-[500px] max-md:max-w-full"
           />
-          <button className="flex items-center justify-center gap-4 mt-[30px] px-10 py-[14px] rounded-lg border-2 border-[rgba(49,48,137,1)] max-md:w-full max-md:px-5">
+          {/* <button className="flex items-center justify-center gap-4 mt-[30px] px-10 py-[14px] rounded-lg border-2 border-[rgba(49,48,137,1)] max-md:w-full max-md:px-5">
             <span className="text-lg font-medium">Read More</span>
-          </button>
+          </button> */}
         </div>
       </div>
     </section>

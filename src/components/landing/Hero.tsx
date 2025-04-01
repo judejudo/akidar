@@ -73,7 +73,7 @@ export const Hero = () => {
           {/* Call to action button */}
           <div className="flex justify-center mt-8">
             <Link
-              to="/contact"
+              to="/services"
               className="bg-[rgba(49,48,137,1)] hover:bg-[rgba(49,48,137,0.9)] text-white text-lg md:text-xl font-bold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
             >
               Get Protected Today

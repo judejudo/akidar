@@ -41,7 +41,7 @@ export const Header = () => {
     { path: "/", label: "Home" },
     { path: "/aboutUs", label: "About" },
     { path: "/Services", label: "Services" },
-    { path: "/jobs", label: "Jobs" }
+    // { path: "/jobs", label: "Jobs" }
   ];
   
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
