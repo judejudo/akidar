@@ -96,7 +96,7 @@ export const About = () => {
           </div>
         </div>
         {/* Security Guard Image & Button */}
-        <div className=" flex flex-col md:blocktext-3xl text-[rgba(49,48,137,1)] items-center font-semibold text-center mt-[537px] w-full">
+        <div className="hidden md:block text-3xl text-[rgba(49,48,137,1)] items-center font-semibold text-center mt-[537px] w-full">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a5ce3b482e3bc965f2983dbb378611b955389f7"
             alt="Security guard"
