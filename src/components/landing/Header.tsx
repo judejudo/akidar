@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
@@ -7,43 +8,37 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  
+
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
-  
+
   // Handle scroll events for styling
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
   // Prevent body scroll when menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [isMenuOpen]);
-  
+
   // Navigation links data for easy management
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/aboutUs", label: "About" },
-    { path: "/Services", label: "Services" },
-    // { path: "/jobs", label: "Jobs" }
+    { path: "/services/event-security", label: "Services" },
   ];
-  
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
@@ -56,21 +51,21 @@ export const Header = () => {
           className="absolute h-full w-full object-cover inset-0"
           aria-hidden="true"
         />
-        
+
         <nav className="relative flex items-center justify-between py-3 md:py-4 px-4 md:px-6 lg:px-10">
           {/* Logo */}
-          <Link to="/" className="relative flex-shrink-0 z-10">
+          <RouterLink to="/" className="relative flex-shrink-0 z-10">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/042c95711795d1e5cc7c2fa9b4856cf34dbe6863?placeholderIfAbsent=true"
               alt="Akidar Security Logo"
               className="h-12 md:h-14 w-auto object-contain"
             />
-          </Link>
-          
+          </RouterLink>
+
           {/* Desktop Navigation - Hidden on mobile */}
           <div className="hidden md:flex md:items-center md:justify-end gap-8">
             {navLinks.map((link) => (
-              <Link
+              <RouterLink
                 key={link.path}
                 to={link.path}
                 className={`text-[rgba(49,48,137,1)] text-xl font-bold transition-colors hover:text-[rgba(49,48,137,0.8)] ${
@@ -78,19 +73,20 @@ export const Header = () => {
                 }`}
               >
                 {link.label}
-              </Link>
+              </RouterLink>
             ))}
-            
-            <Link to="/contact" className="ml-2">
+
+            {/* Scroll to Contact Section */}
+            <ScrollLink to="contact" smooth={true} duration={800} className="ml-2 cursor-pointer">
               <Button 
                 variant="secondary" 
                 className="bg-[rgba(49,48,137,1)] hover:bg-[rgba(49,48,137,0.9)] text-white text-lg font-bold px-6 py-2 rounded-md transition-colors"
               >
                 Contact Us
               </Button>
-            </Link>
+            </ScrollLink>
           </div>
-          
+
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
@@ -105,13 +101,13 @@ export const Header = () => {
             )}
           </button>
         </nav>
-        
-        {/* Mobile Menu Overlay - Completely separate from desktop menu */}
+
+        {/* Mobile Menu Overlay */}
         {isMenuOpen && (
           <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center">
             <div className="flex flex-col items-center gap-8 py-8">
               {navLinks.map((link) => (
-                <Link
+                <RouterLink
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMenuOpen(false)}
@@ -120,13 +116,16 @@ export const Header = () => {
                   }`}
                 >
                   {link.label}
-                </Link>
+                </RouterLink>
               ))}
-              
-              <Link 
-                to="/contact" 
+
+              {/* Scroll to Contact Section in Mobile Menu */}
+              <ScrollLink 
+                to="contact" 
+                smooth={true} 
+                duration={800} 
                 onClick={() => setIsMenuOpen(false)}
-                className="mt-4"
+                className="mt-4 cursor-pointer"
               >
                 <Button 
                   variant="secondary" 
@@ -134,7 +133,7 @@ export const Header = () => {
                 >
                   Contact Us
                 </Button>
-              </Link>
+              </ScrollLink>
             </div>
           </div>
         )}

@@ -5,10 +5,14 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Service from "./pages/Service";
 import Layout from "./components/Layout";
 import AboutUs from "./pages/Aboutus";
-import EventSecurity from "./components/services/EventSecurity";
+import EventSecurity from "./pages/services/EventSecurity";
+import SystemServices from "./pages/services/SystemServices";
+import EventSecurityPage from "./pages/services/EventSecurity";
+import SecuritySystemsPage from "./pages/services/SystemServices";
+import CCTVInstallationPage from "./pages/services/CctvServices";
+import ScrollToTop from "./components/ScrollToTop"; // Import ScrollToTop
 
 const queryClient = new QueryClient();
 
@@ -18,40 +22,15 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop /> {/* Ensures each page starts at the top */}
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Layout>
-                <Index />
-              </Layout>
-            }
-          />
-          <Route
-            path="/services"
-            element={
-              <Layout>
-                <Service />
-              </Layout>
-            }
-          />
-          <Route
-            path="/events"
-            element={
-              <Layout>
-                <EventSecurity />
-              </Layout>
-            }
-          />
-          <Route
-            path="/aboutUs"
-            element={
-              <Layout>
-                <AboutUs />
-              </Layout>
-            }
-          />
-          {/* Catch-all route for 404 pages */}
+          <Route path="/" element={<Layout><Index /></Layout>} />
+          <Route path="/services/event-security" element={<Layout><EventSecurityPage /></Layout>} />
+          <Route path="/services/security-systems" element={<Layout><SecuritySystemsPage /></Layout>} />
+          <Route path="/services/cctv-installation" element={<Layout><CCTVInstallationPage /></Layout>} />
+          <Route path="/systemServices" element={<Layout><SystemServices /></Layout>} />
+          <Route path="/events" element={<Layout><EventSecurity /></Layout>} />
+          <Route path="/aboutUs" element={<Layout><AboutUs /></Layout>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -34,7 +34,7 @@ const ContactInfoItem = ({
   );
 
   return (
-    <div className="relative flex items-center gap-5 mt-6">
+    <div  id="contact" className="relative flex items-center gap-5 mt-6">
       {href ? (
         <a href={href} className="flex items-center gap-5 hover:underline">
           {content}
