@@ -163,7 +163,7 @@ export const Services = () => {
         {/* View All Button */}
         <div className="flex justify-center">
           <Link
-            to="/services"
+            to="/services/security-systems"
             className="border border-indigo-800 text-indigo-800 px-12 py-2 rounded flex items-center justify-center"
           >
             View All
