@@ -29,7 +29,7 @@ export const Footer = () => {
 
   // Service links for mapping
   const SERVICES = [
-    { path: "/services/patrols", label: "Patrols" },
+    { path: "/services/patrol-services", label: "Patrols" },
     { path: "/services/manned-guarding", label: "Manned Guarding" },
     { path: "/services/event-security", label: "Event Security" },
     { path: "/services/dog-services", label: "Dog Services" },

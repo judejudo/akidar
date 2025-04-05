@@ -14,6 +14,9 @@ import SecuritySystemsPage from "./pages/services/SystemServices";
 import CCTVInstallationPage from "./pages/services/CctvServices";
 import ScrollToTop from "./components/ScrollToTop"; // Import ScrollToTop
 
+import PatrolService from "./pages/services/PatrolServices";
+import SecurityFencing from "./pages/services/SecurityFencing";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -26,6 +29,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Layout><Index /></Layout>} />
           <Route path="/services/event-security" element={<Layout><EventSecurityPage /></Layout>} />
+          <Route path="/services/patrol-services" element={<Layout><PatrolService /></Layout>} />
+          <Route path="/services/security-Fencing" element={<Layout><SecurityFencing /></Layout>} />
           <Route path="/services/security-systems" element={<Layout><SecuritySystemsPage /></Layout>} />
           <Route path="/services/cctv-installation" element={<Layout><CCTVInstallationPage /></Layout>} />
           <Route path="/systemServices" element={<Layout><SystemServices /></Layout>} />
