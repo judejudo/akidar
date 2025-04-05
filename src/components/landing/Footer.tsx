@@ -30,12 +30,12 @@ export const Footer = () => {
   // Service links for mapping
   const SERVICES = [
     { path: "/services/patrol-services", label: "Patrols" },
-    { path: "/services/manned-guarding", label: "Manned Guarding" },
+    { path: "/services/patrol-services", label: "Manned Guarding" },
     { path: "/services/event-security", label: "Event Security" },
-    { path: "/services/dog-services", label: "Dog Services" },
+    // { path: "/services/dog-services", label: "Dog Services" },
     { path: "/services/security-systems", label: "Security Systems" },
     { path: "/services/cctv-installation", label: "CCTV Installation" },
-    { path: "/services/security-fencing", label: "Security Fencing" }
+    { path: "/services/security-Fencing", label: "Security Fencing" }
   ];
 
   // Quick links for mapping

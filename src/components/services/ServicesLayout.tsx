@@ -9,9 +9,9 @@ interface ServicesLayoutProps {
 // Service items for the sidebar
 const serviceItems = [
   { name: "Patrol", icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/59c88dd37c820d10879865d0d03314afe3756f20?placeholderIfAbsent=true", path: "/services/patrol-services" },
-  { name: "Manned Guarding", icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/68e4b90487443cd6548c8ee5c334c0c8efe71677?placeholderIfAbsent=true", path: "/services/manned-guarding" },
+  { name: "Manned Guarding", icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/68e4b90487443cd6548c8ee5c334c0c8efe71677?placeholderIfAbsent=true", path: "/services/patrol-services" },
   { name: "Event Security", icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/4f0ced58a4a80933867438a1d7d98750bca5eb94?placeholderIfAbsent=true", path: "/services/event-security" },
-  { name: "Dog Services", icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/30cd076b6d557d09bd446f6fa5708bc66f30608a?placeholderIfAbsent=true", path: "/services/dog-services" },
+  // { name: "Dog Services", icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/30cd076b6d557d09bd446f6fa5708bc66f30608a?placeholderIfAbsent=true", path: "/services/dog-services" },
   { name: "Security Systems", icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/e1534ed0e0b44c204ea367f575c8050f74a84a8e?placeholderIfAbsent=true", path: "/services/security-systems" },
   { name: "CCTV Installation", icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/012d8afdf9a1b3afd963c73b110a7810228b4ab5?placeholderIfAbsent=true", path: "/services/cctv-installation" },
   { name: "Security Fencing", icon: "https://cdn.builder.io/api/v1/image/assets/b2b31d494c6f4b59a8b9179a4eb1a6ff/24d9c908b2609213303a096a0e91422ecdcb71be?placeholderIfAbsent=true", path: "/services/security-fencing" },
